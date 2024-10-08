@@ -1,0 +1,16 @@
+
+Search engine implementation(console).
+
+System logic.
+1. Read user input.
+- String input: reads stop words, insert document, search query.
+- Int input: Enter the number of documents to add.
+- Creating a document.
+- Creating a search query.
+2. Splitting a string into words.
+3. Create stop-words
+4. Forming a query, excluding stop words.
+5. Adding a document to the databases, without stop words.
+6. Remove duplicate words from the query to get the correct relevance.
+7. Relevance of the request and documents.
+8. Find document, get id and relevance.
