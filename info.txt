@@ -13,4 +13,5 @@ System logic.
 5. Adding a document to the databases, without stop words.
 6. Remove duplicate words from the query to get the correct relevance.
 7. Relevance of the request and documents.
-8. Find document, get id and relevance.
+8. Find ALL document, get relevance and id.
+8. Find TOP document, get id and relevance.
