@@ -128,6 +128,7 @@ vector<pair<int, int>>FindAllDocument( const vector<pair<int, vector<string>>>& 
     return rezult;
 }
 
+//9.Find TOP document, get id and relevance 
 vector<pair<int, int>>FindTopDocument( const vector<pair<int, vector<string>>>& documents,
         const set<string>& stop_words, const string& raw_query ) {
     vector<pair<int, int>> rezult_top { };
