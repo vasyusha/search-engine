@@ -14,4 +14,4 @@ System logic.
 6. Remove duplicate words from the query to get the correct relevance.
 7. Relevance of the request and documents.
 8. Find ALL document, get relevance and id.
-8. Find TOP document, get id and relevance.
+9. Find TOP document, get id and relevance.
