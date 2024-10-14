@@ -159,7 +159,62 @@ vector<Document>FindTopDocument( const vector<DocumentContent>& documents,
     return rezult_top;
 }
 
+class SearchServer {
+public:
+        void AddDocument(int document_id, const string& document) {
+            const vector<string> words = SplitInToWordsNoStop(document);
+            documents_.push_back({document_id, words});
 
+        }
+
+private:
+        struct DocumentContent {
+            int id = 0;
+            vector<string> words;
+        };
+
+        vector<DocumentContent> documents_;
+        set<string> stop_words_;
+
+        bool IsStopWord( const string& word ) const {
+            return stop_words_.count(word) > 0;
+        }
+
+        vector<string> SplitInToWordsNoStop( const string& text ) const {
+            vector<string> words { };
+            for( const string& word : SplitInToWords(text) ) {
+                if( !IsStopWord(word) ) {
+                    words.push_back(word);
+                }
+            }
+            return words;
+        }
+
+        set<string> ParseQuery( const string& text ) {
+            set<string> query_words { };
+            for( const string& word : SplitInToWordsNoStop(text) ) {
+                query_words.insert(word);
+            }
+            return query_words;
+        }
+
+        static int MatchDocument( const DocumentContent& content, const set<string>& query_words ) {
+
+            if( query_words.empty() ) {
+                return 0;
+            }
+            set<string> matched_words { };
+            for( const string& word : content.words ) {
+                if( matched_words.count(word) != 0 ) {
+                    continue;
+                }
+                if( query_words.count(word) !=0 ) {
+                    matched_words.insert(word);
+                }
+            }
+            return static_cast<int>(matched_words.size());
+        }
+};
 
 int main() {
 
